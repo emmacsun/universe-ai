@@ -1,0 +1,325 @@
+# Stanford Computer Science (CS-BS) Program
+
+## Overview
+The undergraduate program in Computer Science aims to develop students' breadth of knowledge across the subject areas of computer science, including their ability to apply the defining processes of computer science theory, abstraction, design, and implementation to solve problems in the discipline. Students take core courses in programming techniques, mathematical foundations, automata and complexity theory, systems programming, computer architecture, analysis of algorithms, artificial intelligence, and applications. The program prepares students for careers in government, law, and the corporate sector and for graduate study.
+
+## Guide to Choosing Introductory Courses
+Students arriving at Stanford have widely differing backgrounds and goals. The department offers several introductory courses to meet various needs:
+
+### For General Exposure
+- CS1C: Introduction to Computing at Stanford
+
+### For Non-Technical Use
+- CS101: Introduction to Computing Principles
+- CS105: Introduction to Computers
+Both courses meet Ways of Thinking Ways of Doing breadth requirements in Formal Reasoning.
+
+### For Scientific/Technical Use
+- CS106A: Programming Methodology (Python)
+  - No prior programming experience needed
+- CS106B: Programming Abstractions (C++)
+  - For students with prior programming experience
+  - Previous programming experience can be in any language
+
+### Core Sequence
+After introductory courses, majors should take:
+1. CS103: Mathematical Foundations of Computing
+2. CS107: Computer Organization & Systems
+3. CS111: Operating Systems Principles
+
+## Core Program Requirements
+
+### Mathematics (26 units minimum)
+Required courses:
+- CS103: Mathematical Foundations of Computing
+- CS109: Introduction to Probability for Computer Scientists
+- MATH19: Calculus
+- MATH20: Calculus
+- MATH21: Calculus
+
+Math Electives (at least 2):
+- MATH51: Linear Algebra, Multivariable Calculus, and Modern Applications
+- MATH52: Integral Calculus of Several Variables
+- MATH53: Differential Equations with Linear Algebra
+- MATH104: Applied Matrix Theory
+- MATH107: Graph Theory
+- MATH108: Introduction to Combinatorics
+- MATH109: Groups and Symmetry
+- MATH110: Number Theory for Cryptography
+- MATH113: Linear Algebra and Matrix Theory
+- CS157: Computational Logic
+- CS205L: Continuous Mathematical Methods with Machine Learning
+- CME100: Vector Calculus for Engineers
+- CME102: Ordinary Differential Equations for Engineers
+- CME104: Linear Algebra and Partial Differential Equations
+- ENGR108: Introduction to Matrix Methods
+- PHIL151: Metalogic
+
+Note: CS157 + PHIL151 may not be combined; Students taking Math 51 & 52 may not count CME100.
+
+### Science (11 units minimum)
+Required courses:
+- Physics sequence (choose one):
+  - PHYSICS41: Mechanics OR
+  - PHYSICS21: Mechanics and Fluids OR
+  - PHYSICS61: Mechanics and Special Relativity
+AND
+  - PHYSICS43: Electricity and Magnetism OR
+  - PHYSICS23: Electricity, Magnetism, and Optics OR
+  - PHYSICS81: Electricity and Magnetism Using Special Relativity
+
+Plus one Science Elective (3+ units) from School of Engineering Science list.
+
+### Technology in Society (3-5 units)
+One approved Technology in Society course from SoE list.
+
+### Engineering Fundamentals (13 units minimum)
+Required:
+- CS106B: Programming Abstractions
+- ENGR40M: Intro to Making: What is EE OR ENGR76: Information Science and Engineering
+- One Fundamentals Elective (3-5 units)
+
+### Computer Science Core (15 units)
+Required:
+- CS107: Computer Organization and Systems OR CS107E: Computer Systems from Ground Up
+- CS111: Operating Systems Principles
+- CS161: Design and Analysis of Algorithms
+
+## Subplan Requirements
+Students must complete one of ten subplans, each consisting of at least 25 units and seven courses:
+
+### 1. Artificial Intelligence Subplan
+Required Core:
+- CS221: Artificial Intelligence: Principles and Techniques
+
+Plus two courses from different areas:
+
+**Area I: AI Methods**
+- CS224R: Deep Reinforcement Learning
+- CS228: Probabilistic Graphical Models
+- CS229: Machine Learning
+- CS229M: Machine Learning Theory
+- CS234: Reinforcement Learning
+- CS238: Decision Making under Uncertainty
+
+**Area II: Natural Language Processing**
+- CS124: From Languages to Information
+- CS224N: Natural Language Processing with Deep Learning
+- CS224S: Spoken Language Processing
+- CS224U: Natural Language Understanding
+- CS224V: Conversational Virtual Assistants with Deep Learning
+
+**Area III: Vision**
+- CS131: Computer Vision: Foundations and Applications
+- CS231A: Computer Vision: From 3D Perception to 3D Reconstruction
+- CS231N: Deep Learning for Computer Vision
+
+**Area IV: Robotics**
+- CS123: Hands-On Introduction to Building AI-Enabled Robots
+- CS137A/CS237A: Principles of Robot Autonomy I
+- CS223A: Introduction to Robotics
+
+Plus one additional course from either the areas above or:
+- AI Methods (CS157, CS205L, CS230, CS236, CS257, STATS315A/B)
+- Comp Bio (CS235, CS279, CS371)
+- Information/Web (CS224W, CS276)
+- Ethics (CS256)
+- Robotics/Control (CS225A, CS327A, CS329, ENGR205, MS&E251, MS&E351)
+- Systems (CS229S)
+- Other (CS151, CS227B)
+
+### 2. Computational Biology Subplan
+Biology Requirement (12 units from either):
+- Biology sequence: BIO82, BIO83, BIO85, BIO86
+OR
+- Human Biology sequence: HUMBIO2A, HUMBIO3A, HUMBIO4A
+
+Required Courses:
+- CS173A: Foundations of Computational Human Genomics
+- CS221: Artificial Intelligence: Principles and Techniques
+
+Choose one:
+- CS145: Introduction to Big Data Systems
+- CS246: Mining Massive Data Sets
+
+Choose one:
+- CS142: Web Applications
+- CS147L: Cross-platform Mobile App Development
+- CS448B: Data Visualization
+
+Plus one course from Bioinformatics electives and one course from CS electives.
+
+### 3. Computer Engineering Subplan
+Required Core:
+- EE108: Digital System Design
+- EE180: Digital Systems Architecture
+
+Plus two from:
+- EE101A/B: Circuits I/II
+- EE102A/B: Signals and Systems I/II
+
+Choose one concentration:
+
+**Digital Systems:**
+- EE109: Digital Systems Design Lab
+- EE271: Introduction to VLSI Systems
+- One systems elective (CS112/CS140E)
+
+**Robotics and Mechatronics:**
+- CS205L: Mathematical Methods with Machine Learning
+- CS223A: Introduction to Robotics
+- ME210/CS225A: Mechatronics/Experimental Robotics
+
+**Networking:**
+- CS112/CS140E: Operating Systems Implementation
+- CS144: Computer Networking
+- One networking elective
+
+### 4. Visual Computing Subplan
+Visual Computing Core (two courses):
+- CS225A: Experimental Robotics
+- CS248A: Computer Graphics: Rendering
+- CS248B: Computer Graphics: Animation
+- CS231N: Deep Learning for Computer Vision
+
+Visual Computing Depth (three courses):
+- CS205L: Mathematical Methods
+- CS223A: Introduction to Robotics
+- CS231A/N: Computer Vision
+- CS233: Geometric Data Analysis
+- CS248A/B: Computer Graphics
+- CS348B/C/E/I/K/N: Advanced Graphics courses
+- EE267: Virtual Reality
+
+Plus three additional courses from approved list.
+
+### 5. Human-Computer Interaction Subplan
+Required Core:
+- CS142/CS147L: Web Applications/Mobile Development
+- CS147: Introduction to HCI Design
+- CS347: HCI Foundations and Frontiers
+
+One CS247 course and three HCI Mezzanine courses:
+- CS177: Human Centered Product Management
+- CS278: Social Computing
+- CS448B: Data Visualization
+
+Plus two additional electives.
+
+### 6. Information Subplan
+Required Core:
+- CS124: From Languages to Information
+- CS145: Introduction to Big Data Systems
+
+Two courses from different areas:
+
+**Information-based AI:**
+- CS224N/S: Natural Language Processing
+- CS229: Machine Learning
+- CS233: Geometric Data Analysis
+- CS234: Reinforcement Learning
+
+**Database/Information Systems:**
+- CS112/140E: Systems Implementation
+- CS142: Web Applications
+- CS147: HCI Design
+- CS245: Data-Intensive Systems
+- CS246: Mining Massive Data Sets
+
+**Biology Information Systems:**
+- CS235: Biomedical Image Analysis
+- CS270: Biomedical Systems
+- CS274: Computational Molecular Biology
+
+**Web Information Systems:**
+- CS224W: Machine Learning with Graphs
+
+Plus two additional electives.
+
+### 7. Systems Subplan
+Required:
+- CS112/CS140E: Operating Systems Implementation
+- One systems course (CS143 or EE180)
+- Two additional systems courses from approved list
+
+Plus three electives from:
+- CS144: Computer Networking
+- CS145: Big Data Systems
+- CS149: Parallel Computing
+- CS155: Computer Security
+- CS217: Hardware Accelerators
+- CS240/240LX: Advanced Operating Systems
+- CS242: Programming Languages
+- CS244: Advanced Networking
+- CS245: Data-Intensive Systems
+
+### 8. Theory Subplan
+Required:
+- CS154: Theory of Computation
+
+One course from:
+- CS168: Modern Algorithmic Toolbox
+- CS255: Introduction to Cryptography
+- CS261: Combinatorial Optimization
+- CS265: Randomized Algorithms
+
+Two additional theory courses from:
+- CS143: Compilers
+- CS151: Logic Programming
+- CS155: Security
+- CS157/PHIL151: Logic
+- CS166: Data Structures
+- CS255: Cryptography
+- CS258: Complexity Theory
+- CS261: Optimization
+- CS263: Counting
+- CS265: Algorithms
+
+Plus three additional electives.
+
+### 9. Unspecialized Subplan
+Required:
+- CS154: Theory of Computation
+- One systems course (CS112/140E or CS143)
+- One AI course (CS221, CS223A, CS228, CS229, CS231A)
+- One applications course
+- Three additional electives
+
+### 10. Individually Designed Subplan
+Students may propose a customized program with:
+- Minimum seven courses
+- At least four CS courses numbered 100+
+- Coherent theme
+- Approval required two quarters before graduation
+
+## Writing in the Major (WIM)
+Complete one:
+- CS181W: Computers, Ethics, and Public Policy
+- CS182W: Ethics, Public Policy, and Technological Change
+- CS191W: Writing Intensive Senior Research Project
+- CS194W: Software Project
+- CS210B: Software Project Experience with Corporate Partners
+
+## Senior Project (3 units)
+Choose from:
+- CS191: Senior Project
+- CS191W: Writing Intensive Senior Research Project
+- CS194: Software Project
+- CS194H: User Interface Design Project
+- CS194W: Software Project
+- CS210B: Software Project Experience with Corporate Partners
+
+## Additional Requirements
+- All courses for the major must be taken for a letter grade if offered
+- Minimum Combined GPA of 2.0 for Engineering Fundamentals and Depth courses
+- Course may only count toward one requirement (no double-counting)
+
+## Honors Program (Optional)
+Requirements:
+- 3.6+ GPA in courses counting toward major
+- Senior standing
+- Faculty advisor agreement
+- Complete 9+ units of CS191/CS191W
+- Attend weekly honors seminar
+- Complete and present acceptable honors thesis
+- Maintain 3.6 GPA

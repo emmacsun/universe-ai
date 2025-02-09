@@ -1,0 +1,77 @@
+# Stanford CS 4-Year Course Plan AI track
+## Freshman Year
+
+### Fall Quarter
+- Ways requirement
+- Ways requirement
+- COLLEGE/THINK requirement
+- Writing requirement
+
+### Winter Quarter
+- Math 19
+- CS 106A
+- Intro Seminar
+- Ways requirement
+- Ways requirement
+
+### Spring Quarter
+- Math 20
+- CS 106B
+- Elective
+
+## Sophomore Year
+
+### Fall Quarter
+- Physics 21
+- Math 21
+- Ways requirement
+- Writing requirement
+
+### Winter Quarter
+- Physics 23
+- CS 107
+- Math elective
+- Ways requirement
+
+### Spring Quarter
+- CS 103
+- ENG 40M
+- CS 111
+
+## Junior Year
+
+### Fall Quarter
+- CS 109
+- CS 124
+- Language requirement
+
+### Winter Quarter
+- CS 161
+- Language requirement
+- Ways requirement
+- Ways requirement
+
+### Spring Quarter
+- CS221
+- Math elective
+- Language requirement
+
+## Senior Year
+
+### Fall Quarter
+- CS 230
+- CS 229
+- Ways requirement
+- TIS course
+
+### Winter Quarter
+- Ways requirement
+- CS elective
+- CS elective
+- Elective
+
+### Spring Quarter
+- CS 194W
+- Science elective
+- CS elective
+- Elective
