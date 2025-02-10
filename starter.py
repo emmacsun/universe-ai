@@ -1,5 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from typing import Optional, List
 import os.path
 import pandas as pd
 from llama_index.core import (
@@ -8,8 +10,6 @@ from llama_index.core import (
     load_index_from_storage,
     Document
 )
-from typing import Optional, List
-from pydantic import BaseModel
 
 app = FastAPI(title="Course Information API")
 
@@ -135,24 +135,59 @@ async def query_information(request: QueryRequest):
     if global_index is None:
         raise HTTPException(status_code=500, detail="Index not initialized")
     
+    # Print conversation history for debugging
+    print("\n=== Conversation History ===")
+    if request.conversation_history:
+        for msg in request.conversation_history:
+            print(f"{msg['role'].upper()}: {msg['content']}")
+    print("==========================\n")
+    
     # Build context from conversation history
     context = ""
     if request.conversation_history:
-        for msg in request.conversation_history[:-1]:  # Exclude the current query
-            role = "User" if msg["role"] == "user" else "Assistant"
-            context += f"{role}: {msg['content']}\n"
+        context = """
+System: You are a Stanford course assistant. Only use information that was explicitly stated in the conversation.
+DO NOT make assumptions about the student's interests or background unless they specifically mentioned them.
+
+Previous conversation:
+"""
+        # Add conversation history
+        for msg in request.conversation_history:
+            prefix = "Human" if msg["role"] == "user" else "Assistant"
+            context += f"{prefix}: {msg['content']}\n"
+        
+        # Print final prompt for debugging
+        print("\n=== Final Prompt ===")
+        print(context)
+        print("===================\n")
+        
+        context += "\nSystem: Important rules:"
+        context += "\n- Only reference information that was explicitly stated by the student"
+        context += "\n- If you need information to answer a question, ask for it"
+        context += "\n- Do not make assumptions about courses taken or interests"
+        context += "\n- For prerequisites, always ask about relevant course history if not mentioned"
     
-    # Add context to the query if it exists
-    query = request.query
-    if context:
-        query = f"Previous conversation:\n{context}\nCurrent question: {query}"
+    # Construct the final query
+    final_query = f"""
+{context}
+Human: {request.query}
+
+Instructions:
+1. Only use information explicitly stated by the student
+2. Do not assume any courses taken or interests
+3. If asked about prerequisites, ask for their course history if not provided
+4. If you need more information to give accurate advice, ask for it
+5. Base course recommendations only on stated information and requirements
+
+Please respond to the question:
+"""
     
     query_engine = global_index.as_query_engine(
         response_mode="tree_summarize",
         similarity_top_k=request.max_results,
     )
     
-    response = query_engine.query(query)
+    response = query_engine.query(final_query)
     return QueryResponse(response=str(response))
 
 @app.get("/available-majors")
