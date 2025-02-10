@@ -8,46 +8,121 @@ interface Message {
   timestamp: number;
 }
 
+interface User {
+  email: string;
+  token: string;
+}
+
 function App() {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isRegistering, setIsRegistering] = useState(false);
+  const [error, setError] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll to bottom when new messages arrive
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+  useEffect(() => {
+    // Check for saved token
+    const savedToken = localStorage.getItem('token');
+    const savedEmail = localStorage.getItem('email');
+    if (savedToken && savedEmail) {
+      setUser({ email: savedEmail, token: savedToken });
+      loadConversationHistory(savedToken);
+    }
+  }, []);
 
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
 
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const loadConversationHistory = async (token: string) => {
+    try {
+      const response = await fetch('http://localhost:8000/conversation-history', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      const data = await response.json();
+      if (data.history) {
+        const formattedMessages: Message[] = data.history.map((msg: any) => ({
+          type: msg.role === 'user' ? 'user' : 'bot',
+          content: msg.content,
+          timestamp: new Date(msg.timestamp).getTime()
+        }));
+        setMessages(formattedMessages);
+      }
+    } catch (error) {
+      console.error('Error loading conversation history:', error);
+    }
+  };
+
+  const handleAuth = async (isRegister: boolean) => {
+    try {
+      const endpoint = isRegister ? 'register' : 'token';
+      const response = await fetch(`http://localhost:8000/${endpoint}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `username=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.detail || 'Authentication failed');
+      }
+
+      const data = await response.json();
+      const newUser = { email, token: data.access_token };
+      setUser(newUser);
+      localStorage.setItem('token', data.access_token);
+      localStorage.setItem('email', email);
+      
+      if (!isRegister) {
+        loadConversationHistory(data.access_token);
+      }
+      
+      setError('');
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const handleLogout = () => {
+    setUser(null);
+    setMessages([]);
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+  };
+
   const handleSend = async () => {
     if (!input.trim()) return;
 
-    // Add user message
     const userMessage: Message = { 
       type: 'user', 
       content: input,
       timestamp: Date.now()
     };
-    setMessages(prev => [...prev, userMessage]);
+
+    // Add user message immediately
+    const updatedMessages = [...messages, userMessage];
+    setMessages(updatedMessages);
     setIsLoading(true);
     setInput('');
 
     try {
-      // Get the last few messages for context (excluding the current message)
-      const recentMessages = messages.slice(-4).map(msg => ({
+      // Send the full conversation history for better context
+      const conversationHistory = updatedMessages.map(msg => ({
         role: msg.type === 'user' ? 'user' : 'assistant',
         content: msg.content
       }));
-
-      // Add the current user message
-      recentMessages.push({
-        role: 'user',
-        content: input
-      });
 
       const response = await fetch('http://localhost:8000/query', {
         method: 'POST',
@@ -57,7 +132,7 @@ function App() {
         body: JSON.stringify({
           query: input,
           max_results: 10,
-          conversation_history: recentMessages
+          conversation_history: conversationHistory
         }),
       });
 
@@ -67,14 +142,15 @@ function App() {
         content: data.response,
         timestamp: Date.now()
       };
-      setMessages(prev => [...prev, botMessage]);
+      setMessages([...updatedMessages, botMessage]);
     } catch (error) {
+      console.error('Error:', error);
       const errorMessage: Message = {
         type: 'bot',
         content: 'Sorry, I encountered an error while processing your request.',
         timestamp: Date.now()
       };
-      setMessages(prev => [...prev, errorMessage]);
+      setMessages([...updatedMessages, errorMessage]);
     }
 
     setIsLoading(false);
@@ -91,19 +167,66 @@ function App() {
     setMessages([]);
   };
 
+  if (!user) {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h1>Stanford Course Assistant</h1>
+        </header>
+        <div className="auth-container">
+          <h2>{isRegistering ? 'Register' : 'Login'}</h2>
+          {error && <div className="error-message">{error}</div>}
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            handleAuth(isRegistering);
+          }}>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button type="submit">
+              {isRegistering ? 'Register' : 'Login'}
+            </button>
+          </form>
+          <button 
+            className="switch-auth-mode"
+            onClick={() => setIsRegistering(!isRegistering)}
+          >
+            {isRegistering ? 'Already have an account? Login' : 'Need an account? Register'}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <h1>Stanford Course Assistant</h1>
-        {messages.length > 0 && (
-          <button 
-            onClick={clearConversation}
-            className="clear-button"
-          >
-            Clear Chat
+        <div className="header-right">
+          <span className="user-email">{user.email}</span>
+          <button onClick={handleLogout} className="logout-button">
+            Logout
           </button>
-        )}
+          {messages.length > 0 && (
+            <button 
+              onClick={clearConversation}
+              className="clear-button"
+            >
+              Clear Chat
+            </button>
+          )}
+        </div>
       </header>
 
       <div className="chat-container">
